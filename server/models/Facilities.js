@@ -8,4 +8,4 @@ const facilitiesSchema = new mongoose.Schema({
     // updated_at: { type: Date, default: Date.now }
 }, { timestamps: true })
 
-module.exports = mongoose.model("facilities", facilitiesSchema)
+module.exports = mongoose.model("facility", facilitiesSchema)

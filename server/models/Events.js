@@ -14,5 +14,5 @@ const eventsSchema = new mongoose.Schema({
     // created_at: { type: Date, default: Date.now },
     // updated_at: { type: Date, default: Date.now }
 }, { timestamps: true })
-module.exports = mongoose.model("events", eventsSchema)
+module.exports = mongoose.model("event", eventsSchema)
 

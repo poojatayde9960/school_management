@@ -12,4 +12,4 @@ const departmentSchema = new mongoose.Schema({
 
     },
 }, { timestamps: true })
-module.exports = mongoose.model("deprtment", departmentSchema)
+module.exports = mongoose.model("department", departmentSchema)
