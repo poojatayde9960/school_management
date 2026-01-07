@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { FaUserGraduate, FaChalkboardTeacher, FaChartPie, FaSignOutAlt } from "react-icons/fa";
 import ClarkStudentPanel from './ClarkStudentPanel';
-import ClassOverview from './ClassOverview'; // 
+import ClassOverview from './ClassOverview';
+import { useClarkLogoutMutation } from '../redux/apis/authApi';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const ClarkPannel = () => {
@@ -10,10 +13,29 @@ const ClarkPannel = () => {
     const [selectedClassFilter, setSelectedClassFilter] = useState("all");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+    // Logout Logic
+    const [clarkLogout, { isSuccess: logoutSuccess }] = useClarkLogoutMutation();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await clarkLogout();
+        } catch (error) {
+            console.error("Logout failed", error);
+        }
+    }
+
+    useEffect(() => {
+        if (logoutSuccess) {
+            toast.success("Logged out successfully");
+            navigate("/clarkLogin");
+        }
+    }, [logoutSuccess, navigate]);
+
     const handleNavigateToClass = (className) => {
         setSelectedClassFilter(className);
         setActiveTab("students");
-        setIsSidebarOpen(false); //
+        setIsSidebarOpen(false);
     };
 
     return (
@@ -68,7 +90,10 @@ const ClarkPannel = () => {
                 </nav>
 
                 <div className="p-4 border-t border-slate-100">
-                    <button className="w-full flex items-center gap-3 px-6 py-3 text-red-600 hover:bg-red-50 rounded-xl transition-colors font-medium">
+                    <button
+                        onClick={handleLogout}
+                        className="w-full flex items-center gap-3 px-6 py-3 text-red-600 hover:bg-red-50 rounded-xl transition-colors font-medium"
+                    >
                         <FaSignOutAlt className="text-lg" />
                         <span>Logout</span>
                     </button>

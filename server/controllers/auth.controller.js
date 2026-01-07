@@ -234,12 +234,12 @@ exports.loginClark = asyncHandler(async (req, res) => {
     }
     const token = jwt.sign({ userId: result._id },
         process.env.JWT_KEY, { expiresIn: "15d" })
-    res.cookie("admin", token, {
+    res.cookie("clark", token, {
         maxAge: 15 * 24 * 60 * 1000,
         httpOnly: true
     })
     res.json({
-        message: "login admin success.",
+        message: "login clark success.",
         result: {
             _id: result._id,
             name: result.name,

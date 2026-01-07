@@ -24,6 +24,7 @@ import ClarkLogin from './clark/ClarkLogin'
 import EventPannel from './admin/EventPannel'
 import ApplicationPanel from './admin/ApplicationPanel'
 import EventDetails from './pages/EventDetails'
+import ClarkProtected from './share/ClarkProtected'
 import ExploreDepartment from './pages/ExploreDepartment'
 
 const AppContent = () => {
@@ -58,7 +59,11 @@ const AppContent = () => {
         <Route path='/eventsDetails/:id' element={<EventDetails />} />
         <Route path="/exploreDepartment/:id" element={<ExploreDepartment />} />
 
-        <Route path='/clarkPannel' element={<ClarkPannel />} />
+        <Route path='/clarkPannel' element={
+          <ClarkProtected>
+            <ClarkPannel />
+          </ClarkProtected>
+        } />
         <Route path='/classOverview' element={<ClassOverview />} />
 
         <Route path='/register' element={<Register />} />
