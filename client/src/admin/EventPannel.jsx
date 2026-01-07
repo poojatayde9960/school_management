@@ -179,10 +179,11 @@ const EventPannel = () => {
 
                                 {/* CATEGORY */}
                                 <td className="px-4 py-4 align-top">
-                                    <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm break-words">
+                                    <span className="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm whitespace-nowrap">
                                         {item.category}
                                     </span>
                                 </td>
+
 
                                 {/* DESCRIPTION (TEXT KHALI YENAR) */}
                                 <td className="px-4 py-4 text-slate-600 
