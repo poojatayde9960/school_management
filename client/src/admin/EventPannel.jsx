@@ -74,6 +74,9 @@ const EventPannel = () => {
             toast.success("Event added successfully")
             closeModal("department_modal")
             formik.resetForm()
+            // Reset file input
+            const fileInput = document.getElementById('add_event_file_input')
+            if (fileInput) fileInput.value = ''
             refetch()
         }
     }, [isSuccess])
@@ -259,11 +262,17 @@ const EventPannel = () => {
                             <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-1">Event Image</label>
                                 <input
+                                    id="add_event_file_input"
                                     type="file"
                                     className="file-input file-input-bordered w-full"
                                     onChange={e => formik.setFieldValue("images", e.currentTarget.files)}
                                     multiple
                                 />
+                                {formik.values.images && formik.values.images.length > 0 && (
+                                    <p className="mt-1 text-xs text-green-600 font-medium">
+                                        {formik.values.images.length} image(s) selected
+                                    </p>
+                                )}
                             </div>
                             <div className="pt-4 border-t border-slate-100 flex justify-end gap-3 mt-6">
                                 <button
@@ -326,7 +335,7 @@ const EventPannel = () => {
 
                                 <input
                                     type="file"
-                                    className="file-input file-input-bordered bg-white w-full"
+                                    className="file-input file-input-bordered  w-full"
                                     multiple
                                     onChange={(e) => {
                                         const files = e.currentTarget.files;
