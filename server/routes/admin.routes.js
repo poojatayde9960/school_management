@@ -1,4 +1,5 @@
 const { addTeacher, fetchTeacher, addDepartment, fetchDepartment, updateDepartment, deleteDepatment, addEvent, fetchEvent, deleteEvent, addStudent, updateEvent, fetchStudent, updateStudent, addFacilities, updateFacilities, fetchFacilities, deleteFacilities, deleteTeacher, deleteStudent } = require("../controllers/admin.controller")
+const { addApplication, getApplications } = require("../controllers/application.controller")
 // const { clarkProtected } = require("../middleware/Protected")
 
 const router = require("express").Router()
@@ -9,6 +10,8 @@ router
     .delete("/delete-teacher/:id", deleteTeacher)
 
     .post("/addFacilities", addFacilities)
+    .post("/add-application", addApplication)
+    .post("/get-application", getApplications)
     .post("/addStudent", addStudent)
     .get("/getStudent", fetchStudent)
     .post("/addEvent", addEvent)

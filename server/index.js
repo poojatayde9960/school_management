@@ -20,7 +20,7 @@ app.use("/api/auth", require("./routes/admin.routes"))
 app.use("/api/application", require("./routes/application.routes"))
 
 app.use((req, res) => {
-    res.status(404).json({ message: "Resouece Not Found" })
+    res.status(404).json({ message: "Resource Not Found" })
 })
 
 app.use((error, req, res, next) => {

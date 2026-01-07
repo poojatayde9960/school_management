@@ -33,7 +33,11 @@ const Admission = () => {
             dateOfBirth: yup.date().required("DOB is required"),
             fatherName: yup.string().required("Father's name is required"),
             motherName: yup.string().required("Mother's name is required"),
-            number: yup.string().required("Mobile number is required").matches(/^[0-9]{10}$/, "Invalid mobile number"),
+            number: yup
+                .string()
+                .required("Contact number is required")
+                .matches(/^[6-9]\d{9}$/, "Enter a valid 10-digit mobile number"),
+
             email: yup.string().email("Invalid email").required("Email is required"),
             address: yup.string().required("Address is required"),
         }),
@@ -194,8 +198,10 @@ const Admission = () => {
                                             type="tel"
                                             {...formik.getFieldProps("number")}
                                             placeholder="Mobile number"
+                                            maxLength={10}
                                             className={handleClass("number")}
                                         />
+
                                         {formik.touched.number && formik.errors.number && <p className="text-red-500 text-xs mt-1">{formik.errors.number}</p>}
                                     </div>
 
