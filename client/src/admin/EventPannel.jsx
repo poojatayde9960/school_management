@@ -326,7 +326,7 @@ const EventPannel = () => {
 
                                 <input
                                     type="file"
-                                    className="file-input file-input-bordered w-full"
+                                    className="file-input file-input-bordered bg-white w-full"
                                     multiple
                                     onChange={(e) => {
                                         const files = e.currentTarget.files;
