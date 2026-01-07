@@ -320,14 +320,27 @@ const EventPannel = () => {
                                 <textarea className={handleClass("description")} {...formik.getFieldProps("description")} rows={3}></textarea>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Event Image (Optional)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">
+                                    Event Image (Optional)
+                                </label>
+
                                 <input
                                     type="file"
                                     className="file-input file-input-bordered w-full"
-                                    onChange={e => formik.setFieldValue("images", e.currentTarget.files)}
                                     multiple
+                                    onChange={(e) => {
+                                        const files = e.currentTarget.files;
+                                        formik.setFieldValue("images", files);
+                                    }}
                                 />
+
+                                {formik.values.images && formik.values.images.length > 0 && (
+                                    <p className="mt-2 text-sm text-green-600">
+                                        {formik.values.images.length} image(s) selected
+                                    </p>
+                                )}
                             </div>
+
                             <div className="pt-4 border-t border-slate-100 flex justify-end gap-3 mt-6">
                                 <button
                                     type="button"

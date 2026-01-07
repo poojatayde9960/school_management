@@ -114,8 +114,8 @@ exports.addStudent = asyncHandler(async (req, res) => {
 
         const { firstName, lastName, email, gender, mobile, dateOfBirth, address, city, state, documentsSubmitted = "Pending", pinCode, admissionDate, status = "Active", classApplied, password } = req.body;
 
-        const { isError } = checkEmpty({ firstName, lastName, email, mobile, dateOfBirth, address, classApplied, password });
-        if (isError) return res.status(400).json({ message: "All fields are required" });
+        const { isError, error } = checkEmpty({ firstName, lastName, email, mobile, dateOfBirth, address, classApplied, password });
+        if (isError) return res.status(400).json({ message: "All fields are required", error });
 
         if (!validator.isEmail(email)) return res.status(400).json({ message: "Invalid Email" });
         if (password.length < 6) return res.status(400).json({ message: "Password must be at least 6 characters" });
