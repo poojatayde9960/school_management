@@ -315,7 +315,7 @@ const StudentPanel = () => {
 
                                 {/* Security & Files */}
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Password {selectedStudent ? "(Leave blank to keep same)" : "<span class='text-red-500'>*</span>"}</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">Password {selectedStudent ? "(Leave blank to keep same)" : ""}</label>
                                     <input className={handleClass("password")} {...formik.getFieldProps("password")} type="password" placeholder="••••••••" />
                                 </div>
                                 <div className="md:col-span-2 lg:col-span-2">

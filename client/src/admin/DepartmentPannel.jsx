@@ -198,7 +198,6 @@ const DepartmentPanel = () => {
                                     </div>
                                 </td>
                             </tr>
-
                         ))}
                     </tbody>
                 </table>
